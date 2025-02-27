@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - EventMaster</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <style>
+        /* Additional styles for contact page */
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--secondary-color);
+        }
+
+        .contact-info-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            height: 100%;
+        }
+
+        .contact-info-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .contact-info-item i {
+            width: 24px;
+            height: 24px;
+            margin-right: 15px;
+            color: var(--primary-color);
+        }
+
+        .staff-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .staff-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .staff-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .staff-info {
+            padding: 20px;
+        }
+
+        .staff-info h3 {
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+        }
+
+        .staff-info .position {
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .staff-contact {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .staff-contact p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .staff-contact i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+
+        .office-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .office-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .office-info {
+            padding: 20px;
+        }
+
+        .office-info h3 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>EventMaster</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li><a href="login.html">Login/register</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?auto=format&fit=crop&q=80') center/cover no-repeat; height: 60vh;">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Contact Us</h1>
+                <p>Get in touch with our team of event planning experts</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section style="padding: 80px 0;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meet Our Team</h2>
+                <p>Connect with our dedicated event specialists</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; margin-bottom: 60px;">
+                <!-- Staff Member 1 -->
+                <div class="staff-card">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80" alt="Sarah Williams" class="staff-image">
+                    <div class="staff-info">
+                        <h3>Sarah Williams</h3>
+                        <p class="position">Corporate Events Director</p>
+                        <p>Specializes in large-scale corporate events and conferences</p>
+                        <div class="staff-contact">
+                            <p><i>📞</i> (123) 456-7890</p>
+                            <p><i>✉️</i> sarah.w@eventmaster.com</p>
+                            <p><i>📍</i> Main Office</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Staff Member 2 -->
+                <div class="staff-card">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80" alt="Emily Chen" class="staff-image">
+                    <div class="staff-info">
+                        <h3>Emily Chen</h3>
+                        <p class="position">Wedding Specialist</p>
+                        <p>Expert in creating magical wedding celebrations</p>
+                        <div class="staff-contact">
+                            <p><i>📞</i> (123) 456-7891</p>
+                            <p><i>✉️</i> emily.c@eventmaster.com</p>
+                            <p><i>📍</i> Downtown Branch</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Staff Member 3 -->
+                <div class="staff-card">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80" alt="Michael Thompson" class="staff-image">
+                    <div class="staff-info">
+                        <h3>Michael Thompson</h3>
+                        <p class="position">Social Events Manager</p>
+                        <p>Specializes in private parties and social gatherings</p>
+                        <div class="staff-contact">
+                            <p><i>📞</i> (123) 456-7892</p>
+                            <p><i>✉️</i> michael.t@eventmaster.com</p>
+                            <p><i>📍</i> West End Office</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form and Info -->
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px;">
+                <div class="contact-form">
+                    <h2 style="color: var(--secondary-color); margin-bottom: 30px;">Send Us a Message</h2>
+                    <form action="#" method="POST">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div>
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div>
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div>
+                            <label for="event-type">Event Type</label>
+                            <select id="event-type" name="event-type" required>
+                                <option value="">Select Event Type</option>
+                                <option value="corporate">Corporate Event</option>
+                                <option value="wedding">Wedding</option>
+                                <option value="social">Social Gathering</option>
+                                <option value="cultural">Cultural Event</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+
+                <div class="contact-info-card">
+                    <h3>Contact Information</h3>
+                    <div class="contact-info-item">
+                        <i>📍</i>
+                        <div>
+                            <strong>Main Office:</strong><br>
+                            123 Event Street<br>
+                            New York, NY 10001
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <i>📞</i>
+                        <div>
+                            <strong>Phone:</strong><br>
+                            (123) 456-7890
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <i>✉️</i>
+                        <div>
+                            <strong>Email:</strong><br>
+                            info@eventmaster.com
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <i>⏰</i>
+                        <div>
+                            <strong>Business Hours:</strong><br>
+                            Monday - Friday: 9:00 AM - 6:00 PM<br>
+                            Saturday: 10:00 AM - 4:00 PM<br>
+                            Sunday: Closed
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Office Locations Section -->
+    <section style="padding: 80px 0; background-color: #f9f9f9;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Offices</h2>
+                <p>Visit us at any of our locations</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px;">
+                <!-- Main Office -->
+                <div class="office-card">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80" alt="Main Office" class="office-image">
+                    <div class="office-info">
+                        <h3>Main Office</h3>
+                        <p style="margin-bottom: 10px;">123 Event Street<br>New York, NY 10001</p>
+                        <p style="margin-bottom: 5px;"><strong>Phone:</strong> (123) 456-7890</p>
+                        <p><strong>Email:</strong> ny@eventmaster.com</p>
+                    </div>
+                </div>
+
+                <!-- Downtown Branch -->
+                <div class="office-card">
+                    <img src="https://images.unsplash.com/photo-1498409785966-ab341407de6e?auto=format&fit=crop&q=80" alt="Downtown Branch" class="office-image">
+                    <div class="office-info">
+                        <h3>Downtown Branch</h3>
+                        <p style="margin-bottom: 10px;">456 Business Ave<br>New York, NY 10002</p>
+                        <p style="margin-bottom: 5px;"><strong>Phone:</strong> (123) 456-7891</p>
+                        <p><strong>Email:</strong> downtown@eventmaster.com</p>
+                    </div>
+                </div>
+
+                <!-- West End Office -->
+                <div class="office-card">
+                    <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80" alt="West End Office" class="office-image">
+                    <div class="office-info">
+                        <h3>West End Office</h3>
+                        <p style="margin-bottom: 10px;">789 West End Blvd<br>New York, NY 10003</p>
+                        <p style="margin-bottom: 5px;"><strong>Phone:</strong> (123) 456-7892</p>
+                        <p><strong>Email:</strong> westend@eventmaster.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Start Planning?</h2>
+                <p>Let's create something amazing together</p>
+                <a href="#" class="btn btn-light">Schedule a Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>EventMaster</h2>
+                    <p>Creating memorable experiences since 2010</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Portfolio</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="#">Corporate Events</a></li>
+                            <li><a href="#">Weddings</a></li>
+                            <li><a href="#">Social Gatherings</a></li>
+                            <li><a href="#">Cultural Events</a></li>
+                            <li><a href="#">Virtual Events</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group">
+                        <h3>Contact Us</h3>
+                        <ul class="contact-info">
+                            <li>123 Event Street, City, Country</li>
+                            <li>Phone: (123) 456-7890</li>
+                            <li>Email: info@eventmaster.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 EventMaster. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">Facebook</a>
+                    <a href="#" class="social-link">Twitter</a>
+                    <a href="#" class="social-link">Instagram</a>
+                    <a href="#" class="social-link">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
