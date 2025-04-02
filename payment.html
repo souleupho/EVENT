@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Quote - EventMaster</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+     <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 400px;
+}
+
+h2 {
+    text-align: center;
+    color: #ff5722;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input, select {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.payment-options {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+button {
+    margin-top: 15px;
+    padding: 12px;
+    background: #ff5722;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #e64a19;
+}
+
+     </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Get a Quote</h2>
+        <form action="#">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+
+            <label for="event-type">Event Type</label>
+            <select id="event-type">
+                <option>Tech Conference Basic</option>
+                <option>Tech Conference Pro</option>
+                <option>Tech Summit Elite</option>
+                <!-- <option>Private Party</option> -->
+            </select>
+
+            <label for="attendees">Number of Attendees</label>
+            <input type="number" id="attendees" placeholder="Enter number" required>
+
+            <label for="payment">Choose Payment Method</label>
+            <div class="payment-options">
+                <input type="radio" id="credit-card" name="payment" checked>
+                <label for="credit-card">Credit Card</label>
+
+                <input type="radio" id="paypal" name="payment">
+                <label for="paypal">PayPal</label>
+
+                <input type="radio" id="upi" name="payment">
+                <label for="upi">UPI</label>
+            </div>
+
+            <button type="submit">Submit Quote</button>
+        </form>
+    </div>
+</body>
+</html>

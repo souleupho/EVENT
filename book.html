@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Tickets - EventMaster</title>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ff6b35;
+        }
+
+        nav ul li a.active {
+            color: #ff6b35;
+        }
+
+        /* Main Content Styles */
+        .booking-section {
+            padding: 60px 0;
+        }
+
+        .booking-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            .booking-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Event Details Styles */
+        .event-details {
+            padding: 40px;
+            background-color: #f0f4f8;
+        }
+
+        .event-image {
+            width: 100%;
+            height: 250px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .event-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .event-info h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .event-meta {
+            margin-bottom: 20px;
+        }
+
+        .event-meta p {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .event-meta strong {
+            display: inline-block;
+            width: 100px;
+        }
+
+        .event-description {
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        /* Booking Form Styles */
+        .booking-form {
+            padding: 40px;
+        }
+
+        .form-title {
+            font-size: 24px;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: #ff6b35;
+            outline: none;
+        }
+
+        .ticket-selection {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .ticket-info {
+            flex: 1;
+        }
+
+        .ticket-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .ticket-price {
+            color: #666;
+        }
+
+        .ticket-quantity {
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            background-color: #eee;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .quantity-btn:hover {
+            background-color: #ddd;
+        }
+
+        .quantity-input {
+            width: 40px;
+            text-align: center;
+            margin: 0 10px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            padding: 5px;
+        }
+
+        .order-summary {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .summary-total {
+            font-weight: 700;
+            font-size: 18px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #ff6b35;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #e55a2b;
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .link-group h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #ff6b35;
+        }
+
+        .link-group ul {
+            list-style: none;
+        }
+
+        .link-group ul li {
+            margin-bottom: 10px;
+        }
+
+        .link-group ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .link-group ul li a:hover {
+            color: #ff6b35;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+
+        .social-links {
+            display: flex;
+        }
+
+        .social-link {
+            color: #ccc;
+            text-decoration: none;
+            margin-left: 15px;
+            transition: color 0.3s;
+        }
+
+        .social-link:hover {
+            color: #ff6b35;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-links {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .social-links {
+                margin-top: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header  style="background-color: #ccc;">
+        <div class="container">
+            <div class="logo" style="color: #e55a2b;">
+                <h1>EventMaster</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="login.html">Login/register</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Booking Section -->
+    <section class="booking-section">
+        <div class="container">
+            <div class="booking-container">
+                <!-- Event Details -->
+                <div class="event-details">
+                    <div class="event-image">
+                        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&q=80" alt="Annual Music Festival">
+                    </div>
+                    <div class="event-info">
+                        <h2>Annual Music Festival</h2>
+                        <div class="event-meta">
+                            <p><strong>Date:</strong> June 15-18, 2023</p>
+                            <p><strong>Location:</strong> Riverside Park, Downtown</p>
+                            <p><strong>Time:</strong> 12:00 PM - 11:00 PM</p>
+                        </div>
+                        <div class="event-description">
+                            <p>Join us for three days of incredible music performances across five stages featuring over 60 artists from around the world. This year's festival includes genres ranging from rock and pop to jazz and electronic music. Food vendors, art installations, and interactive experiences will be available throughout the venue.</p>
+                        </div>
+                        <div class="event-pricing">
+                            <p><strong>Price:</strong> ₹150 - ₹350</p>
+                            <p><strong>Capacity:</strong> 15,000 attendees</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Booking Form -->
+                <div class="booking-form">
+                    <h3 class="form-title">Book Your Tickets</h3>
+                    <form action="#" method="post">
+                        <!-- Ticket Selection -->
+                        <div class="form-group">
+                            <label>Select Tickets</label>
+                            
+                            <div class="ticket-selection">
+                                <div class="ticket-info">
+                                    <div class="ticket-title">General Admission</div>
+                                    <div class="ticket-price">₹150.00</div>
+                                </div>
+                                <div class="ticket-quantity">
+                                    <button type="button" class="quantity-btn decrease">-</button>
+                                    <input type="number" class="quantity-input" value="0" min="0" max="10">
+                                    <button type="button" class="quantity-btn increase">+</button>
+                                </div>
+                            </div>
+                            
+                            <div class="ticket-selection">
+                                <div class="ticket-info">
+                                    <div class="ticket-title">VIP Access</div>
+                                    <div class="ticket-price">₹250.00</div>
+                                </div>
+                                <div class="ticket-quantity">
+                                    <button type="button" class="quantity-btn decrease">-</button>
+                                    <input type="number" class="quantity-input" value="0" min="0" max="10">
+                                    <button type="button" class="quantity-btn increase">+</button>
+                                </div>
+                            </div>
+                            
+                            <div class="ticket-selection">
+                                <div class="ticket-info">
+                                    <div class="ticket-title">Premium Package</div>
+                                    <div class="ticket-price">₹350.00</div>
+                                </div>
+                                <div class="ticket-quantity">
+                                    <button type="button" class="quantity-btn decrease">-</button>
+                                    <input type="number" class="quantity-input" value="0" min="0" max="10">
+                                    <button type="button" class="quantity-btn increase">+</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Contact Information -->
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control" required>
+                        </div>
+                        
+                        <!-- Order Summary -->
+                        <div class="order-summary">
+                            <h4>Order Summary</h4>
+                            <div class="summary-row">
+                                <span>General Admission x0</span>
+                                <span>₹0.00</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>VIP Access x0</span>
+                                <span>₹0.00</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Premium Package x0</span>
+                                <span>₹0.00</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Service Fee</span>
+                                <span>₹0.00</span>
+                            </div>
+                            <div class="summary-row summary-total">
+                                <span>Total</span>
+                                <span>₹0.00</span>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-block">Complete Booking</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>EventMaster</h2>
+                    <p>Creating memorable experiences since 2010</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Portfolio</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="#">Corporate Events</a></li>
+                            <li><a href="#">Weddings</a></li>
+                            <li><a href="#">Social Gatherings</a></li>
+                            <li><a href="#">Cultural Events</a></li>
+                            <li><a href="#">Virtual Events</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group">
+                        <h3>Contact Us</h3>
+                        <ul class="contact-info">
+                            <li>123 Event Street, City, Country</li>
+                            <li>Phone: (123) 456-7890</li>
+                            <li>Email: info@eventmaster.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 EventMaster. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">Facebook</a>
+                    <a href="#" class="social-link">Twitter</a>
+                    <a href="#" class="social-link">Instagram</a>
+                    <a href="#" class="social-link">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript to handle quantity buttons and update order summary
+        document.addEventListener('DOMContentLoaded', function() {
+            const decreaseButtons = document.querySelectorAll('.decrease');
+            const increaseButtons = document.querySelectorAll('.increase');
+            const quantityInputs = document.querySelectorAll('.quantity-input');
+            
+            // Prices for each ticket type
+            const prices = [150, 250, 350];
+            const serviceFee = 15; // Service fee per ticket
+            
+            // Update order summary
+            function updateSummary() {
+                let total = 0;
+                let totalFees = 0;
+                
+                // Update each line in the summary
+                for (let i = 0; i < quantityInputs.length; i++) {
+                    const quantity = parseInt(quantityInputs[i].value);
+                    const price = prices[i];
+                    const lineTotal = quantity * price;
+                    total += lineTotal;
+                    
+                    // Update the summary line
+                    const summaryLines = document.querySelectorAll('.summary-row');
+                    summaryLines[i].innerHTML = `<span>${document.querySelectorAll('.ticket-title')[i].textContent} x${quantity}</span><span>$${lineTotal.toFixed(2)}</span>`;
+                    
+                    // Calculate service fees
+                    totalFees += quantity * serviceFee;
+                }
+                
+                // Update service fee
+                const feeElement = document.querySelectorAll('.summary-row')[3];
+                feeElement.innerHTML = `<span>Service Fee</span><span>₹${totalFees.toFixed(2)}</span>`;
+                
+                // Update total
+                const totalElement = document.querySelector('.summary-total');
+                const grandTotal = total + totalFees;
+                totalElement.innerHTML = `<span>Total</span><span>₹${grandTotal.toFixed(2)}</span>`;
+            }
+            
+            // Add event listeners to decrease buttons
+            decreaseButtons.forEach((button, index) => {
+                button.addEventListener('click', function() {
+                    let value = parseInt(quantityInputs[index].value);
+                    if (value > 0) {
+                        quantityInputs[index].value = value - 1;
+                        updateSummary();
+                    }
+                });
+            });
+            
+            // Add event listeners to increase buttons
+            increaseButtons.forEach((button, index) => {
+                button.addEventListener('click', function() {
+                    let value = parseInt(quantityInputs[index].value);
+                    if (value < 10) {
+                        quantityInputs[index].value = value + 1;
+                        updateSummary();
+                    }
+                });
+            });
+            
+            // Add event listeners to quantity inputs
+            quantityInputs.forEach(input => {
+                input.addEventListener('change', updateSummary);
+            });
+            
+            // Initialize summary
+            updateSummary();
+        });
+    </script>
+</body>
+</html>
